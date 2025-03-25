@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h2>All Borrowed Books</h2>
+  {% if borrowed_books %}
+    <ul>
+      {% for book in borrowed_books %}
+        <li>
+          {{ book.book.title }} - Borrowed by {{ book.borrower.get_full_name }} (Due: {{ book.due_back }})
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No books currently borrowed.</p>
+  {% endif %}
+{% endblock %}
